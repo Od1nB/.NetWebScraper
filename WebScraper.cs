@@ -2,6 +2,12 @@
 
 public static class WebScraper
 {
+    private static Task<string> GetHtml()
+    {
+        string websiteUrl = "https://www.kode24.no";
+        HttpClient httpClient = new HttpClient();
+        return httpClient.GetStringAsync(websiteUrl);
+    }
 
     private static List<string> ParseAndReturnOfferings(string html)
     {
@@ -16,12 +22,6 @@ public static class WebScraper
         return articlesList;
     }
 
-    private static Task<string> GetHtml()
-    {
-        string websiteUrl = "https://www.kode24.no";
-        HttpClient httpClient = new HttpClient();
-        return httpClient.GetStringAsync(websiteUrl);
-    }
 
 static async Task Main(string[] args)
 {
